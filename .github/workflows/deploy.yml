@@ -41,5 +41,5 @@ jobs:
             sudo systemctl enable docker
             sudo docker stop ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
             sudo docker rm ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
-            sudo docker run -p 80:80 -d  --restart unless-stopped ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
+            sudo docker run -p 80:80 -d  --restart unless-stopped --name nginx_container ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
       
