@@ -37,7 +37,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            sudo docker stop venisnginx
-            sudo docker rm venisnginx
+            sudo systemctl start docker
+            sudo systemctl enable docker
+            sudo docker stop venisnginx:latest
+            sudo docker rm venisnginx:latest
             sudo docker run -p 80:80 -d  --restart=always ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
       
