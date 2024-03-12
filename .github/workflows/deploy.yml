@@ -39,7 +39,7 @@ jobs:
           script: |
             sudo systemctl start docker
             sudo systemctl enable docker
-            sudo docker stop ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
-            sudo docker rm ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
+            sudo docker stop nginx_container
+            sudo docker rm nginx_container
             sudo docker run -p 80:80 -d  --restart unless-stopped --name nginx_container ${{ secrets.DOCKER_USERNAME}}/venisnginx:latest
       
